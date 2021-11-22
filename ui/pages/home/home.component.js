@@ -452,6 +452,14 @@ export default class Home extends PureComponent {
               >
                 <TransactionList />
               </Tab>
+              <Tab
+                activeClassName="home__tab--active"
+                className="home__tab"
+                data-testid="home__activity-tab"
+                name={t('airdrop')}
+              >
+                <TransactionList />
+              </Tab>
             </Tabs>
             <div className="home__support">
               {isBeta() ? (

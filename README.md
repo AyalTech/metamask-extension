@@ -1,19 +1,8 @@
-# MetaMask Browser Extension
+# AirMask Browser Extension
 
-Hey! We are hiring JavaScript Engineers! [Apply here](https://boards.greenhouse.io/consensys/jobs/2572388)!
 ---
 
-You can find the latest version of MetaMask on [our official website](https://metamask.io/). For help using MetaMask, visit our [User Support Site](https://metamask.zendesk.com/hc/en-us).
-
-For [general questions](https://community.metamask.io/c/learn/26), [feature requests](https://community.metamask.io/c/feature-requests-ideas/13), or [developer questions](https://community.metamask.io/c/developer-questions/11), visit our [Community Forum](https://community.metamask.io/).
-
-MetaMask supports Firefox, Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
-
-For up to the minute news, follow our [Twitter](https://twitter.com/metamask) or [Medium](https://medium.com/metamask) pages.
-
-To learn how to develop MetaMask-compatible applications, visit our [Developer Docs](https://metamask.github.io/metamask-docs/).
-
-To learn how to contribute to the MetaMask project itself, visit our [Internal Docs](https://github.com/MetaMask/metamask-extension/tree/develop/docs).
+AirMask supports Firefox, Google Chrome, and Chromium-based browsers. We recommend using the latest available browser version.
 
 ## Building locally
 
@@ -21,7 +10,7 @@ To learn how to contribute to the MetaMask project itself, visit our [Internal D
     - If you are using [nvm](https://github.com/creationix/nvm#installation) (recommended) running `nvm use` will automatically choose the right node version for you.
 - Install [Yarn](https://yarnpkg.com/en/docs/install)
 - Install dependencies: `yarn setup` (not the usual install command)
-- Copy the `.metamaskrc.dist` file to `.metamaskrc`
+- Copy the `.airmaskrc.dist` file to `.airmaskrc`
     - Replace the `INFURA_PROJECT_ID` value with your own personal [Infura Project ID](https://infura.io/docs).
     - If debugging MetaMetrics, you'll need to add a value for `SEGMENT_WRITE_KEY` [Segment write key](https://segment.com/docs/connections/find-writekey/).
 - Build the project to the `./dist/` folder with `yarn dist`.

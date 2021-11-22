@@ -27,7 +27,7 @@ const terser = require('terser');
 
 const bifyModuleGroups = require('bify-module-groups');
 
-const metamaskrc = require('rc')('metamask', {
+const airmaskrc = require('rc')('airmaskrc', {
   INFURA_PROJECT_ID: process.env.INFURA_PROJECT_ID,
   INFURA_BETA_PROJECT_ID: process.env.INFURA_BETA_PROJECT_ID,
   INFURA_FLASK_PROJECT_ID: process.env.INFURA_FLASK_PROJECT_ID,
@@ -80,7 +80,7 @@ const ENVIRONMENT = {
  * @throws {Error} Throws if the requested key is missing.
  */
 function getConfigValue(key) {
-  const value = metamaskrc[key];
+  const value = airmaskrc[key];
   if (!value) {
     throw new Error(`Missing config entry for '${key}'`);
   }
@@ -101,7 +101,7 @@ function getInfuraProjectId({ buildType, environment, testing }) {
     return '00000000000000000000000000000000';
   } else if (environment !== ENVIRONMENT.PRODUCTION) {
     // Skip validation because this is unset on PRs from forks.
-    return metamaskrc.INFURA_PROJECT_ID;
+    return airmaskrc.INFURA_PROJECT_ID;
   } else if (buildType === BuildType.main) {
     return getConfigValue('INFURA_PROD_PROJECT_ID');
   } else if (buildType === BuildType.beta) {
@@ -123,7 +123,7 @@ function getInfuraProjectId({ buildType, environment, testing }) {
 function getSegmentWriteKey({ buildType, environment }) {
   if (environment !== ENVIRONMENT.PRODUCTION) {
     // Skip validation because this is unset on PRs from forks, and isn't necessary for development builds.
-    return metamaskrc.SEGMENT_WRITE_KEY;
+    return airmaskrc.SEGMENT_WRITE_KEY;
   } else if (buildType === BuildType.main) {
     return getConfigValue('SEGMENT_PROD_WRITE_KEY');
   } else if (buildType === BuildType.beta) {
@@ -754,16 +754,16 @@ function getEnvironmentVariables({ buildType, devMode, testing }) {
     IN_TEST: testing ? 'true' : false,
     PUBNUB_SUB_KEY: process.env.PUBNUB_SUB_KEY || '',
     PUBNUB_PUB_KEY: process.env.PUBNUB_PUB_KEY || '',
-    CONF: devMode ? metamaskrc : {},
+    CONF: devMode ? airmaskrc : {},
     SENTRY_DSN: process.env.SENTRY_DSN,
-    SENTRY_DSN_DEV: metamaskrc.SENTRY_DSN_DEV,
+    SENTRY_DSN_DEV: airmaskrc.SENTRY_DSN_DEV,
     INFURA_PROJECT_ID: getInfuraProjectId({ buildType, environment, testing }),
-    SEGMENT_HOST: metamaskrc.SEGMENT_HOST,
+    SEGMENT_HOST: airmaskrc.SEGMENT_HOST,
     SEGMENT_WRITE_KEY: getSegmentWriteKey({ buildType, environment }),
     SWAPS_USE_DEV_APIS: process.env.SWAPS_USE_DEV_APIS === '1',
-    ONBOARDING_V2: metamaskrc.ONBOARDING_V2 === '1',
-    COLLECTIBLES_V1: metamaskrc.COLLECTIBLES_V1 === '1',
-    EIP_1559_V2: metamaskrc.EIP_1559_V2 === '1',
+    ONBOARDING_V2: airmaskrc.ONBOARDING_V2 === '1',
+    COLLECTIBLES_V1: airmaskrc.COLLECTIBLES_V1 === '1',
+    EIP_1559_V2: airmaskrc.EIP_1559_V2 === '1',
   };
 }
 
